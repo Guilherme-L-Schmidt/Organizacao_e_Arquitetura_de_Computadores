@@ -25,7 +25,7 @@
 
 jmp main
 
-cores : var #12
+cores : var #13
 static cores + #0, #0
 static cores + #1, #256
 static cores + #2, #512
@@ -40,7 +40,7 @@ static cores + #10, #2560
 static cores + #11, #2816
 static cores + #12, #3072
 
-mensagem2 : string "Hello World!"
+mensagem2 : string "Xupa Federal!"
 
 ;---- Inicio do Programa Principal -----
 
