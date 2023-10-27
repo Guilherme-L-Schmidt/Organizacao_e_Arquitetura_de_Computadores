@@ -404,7 +404,7 @@ loop:
 					break;
 
 				case MOV:
-					IR;
+
 					if(IR % 2 == 0) {
 						selM4 = ry;
 						selM2 = sM4;
@@ -424,22 +424,142 @@ loop:
 					break;
 
 				case ADD:
-				case SUB:
-				case MULT:
-				case DIV:
-				case LMOD:
-				case LAND:
-				case LOR:
-				case LXOR:
-				case LNOT:
-					// reg[rx] = reg[ry] + reg[rz]; // Soma ou outra operacao
+
+					selM3 = ry;
+					selM4 = rz;
+					OP = ADD;
+					carry = IR%2;
+					selM2 = sULA;
+					LoadReg[rx] = 1;
+					selM6 = sULA;
+					LoadFR = 1;
 					
+					// -----------------------------
+					state=STATE_FETCH;
+					break;
+
+				case SUB:
+
+					selM3 = ry;
+					selM4 = rz;
+					OP = SUB;
+					selM2 = sULA;
+					LoadReg[rx] = 1;
+					selM6 = sULA;
+					LoadFR = 1;
+
+					// -----------------------------
+					state=STATE_FETCH;
+					break;
+
+				case MULT:
+
+					selM3 = ry;
+					selM4 = rz;
+					OP = MULT;
+					selM2 = sULA;
+					LoadReg[rx] = 1;
+					selM6 = sULA;
+					LoadFR = 1;
+
+					// -----------------------------
+					state=STATE_FETCH;
+					break;
+
+				case DIV:
+
+					selM3 = ry;
+					selM4 = rz;
+					OP = DIV;
+					selM2 = sULA;
+					LoadReg[rx] = 1;
+					selM6 = sULA;
+					LoadFR = 1;
+
+					// -----------------------------
+					state=STATE_FETCH;
+					break;
+
+				case LMOD:
+
+					selM3 = ry;
+					selM4 = rz;
+					OP = LMOD;
+					selM2 = sULA;
+					LoadReg[rx] = 1;
+					selM6 = sULA;
+					LoadFR = 1;
+
+					// -----------------------------
+					state=STATE_FETCH;
+					break;
+
+				case LAND:
+
+					selM3 = ry;
+					selM4 = rz;
+					OP = LAND;
+					selM2 = sULA;
+					LoadReg[rx] = 1;
+					selM6 = sULA;
+					LoadFR = 1;
+
+					// -----------------------------
+					state=STATE_FETCH;
+					break;
+
+				case LOR:
+
+					selM3 = ry;
+					selM4 = rz;
+					OP = LOR;
+					selM2 = sULA;
+					LoadReg[rx] = 1;
+					selM6 = sULA;
+					LoadFR = 1;
+
+					// -----------------------------
+					state=STATE_FETCH;
+					break;
+
+				case LXOR:
+
+					selM3 = ry;
+					selM4 = rz;
+					OP = LXOR;
+					selM2 = sULA;
+					LoadReg[rx] = 1;
+					selM6 = sULA;
+					LoadFR = 1;
+
+					// -----------------------------
+					state=STATE_FETCH;
+					break;
+
+				case LNOT:
+
+					selM3 = ry;
+					selM4 = rz;
+					OP = LNOT;
+					selM2 = sULA;
+					LoadReg[rx] = 1;
+					selM6 = sULA;
+					LoadFR = 1;
+
 					// -----------------------------
 					state=STATE_FETCH;
 					break;
 
 				case INC:
 					//reg[rx]++;                                  // Inc Rx ou DEC
+
+					selM3 = rx;
+					selM4 = 8;
+					OP = LNOT;
+					selM2 = sULA;
+					LoadReg[rx] = 1;
+					selM6 = sULA;
+					LoadFR = 1;
 					
 					// -----------------------------
 					state=STATE_FETCH;
