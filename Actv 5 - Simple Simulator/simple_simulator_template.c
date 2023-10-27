@@ -551,11 +551,13 @@ loop:
 					break;
 
 				case INC:
-					//reg[rx]++;                                  // Inc Rx ou DEC
 
 					selM3 = rx;
 					selM4 = 8;
-					OP = LNOT;
+					if((IR/64)%2 == 0)
+						OP = ADD;
+					else
+						OP = SUB;
 					selM2 = sULA;
 					LoadReg[rx] = 1;
 					selM6 = sULA;
@@ -567,6 +569,12 @@ loop:
 
 				case CMP:   // seta 3 flags: maior, menor ou igual
 					//if(rx == ry)
+
+					selM3 = rx;
+					selM4 = ry;
+					OP = CMP;
+					selM2 = sULA;
+					LoadFR = 1;
 					
 					// -----------------------------
 					state=STATE_FETCH;
